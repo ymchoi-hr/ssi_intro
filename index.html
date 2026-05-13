@@ -1,0 +1,995 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>상상인 톺아보기 🔎</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css" rel="stylesheet">
+
+  <style>
+
+  :root{
+    --main-color: rgb(0,191,182);
+    --sub-color: rgb(39,54,70);
+    --gray-color: rgb(153,153,153);
+    --point-color: rgb(205,182,137);
+
+    --bg-light:#f6fbfb;
+    --white:#ffffff;
+  }
+
+  *{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+  }
+
+  html{
+    scroll-behavior:smooth;
+  }
+
+  body{
+    font-family:'Pretendard', sans-serif;
+    background:var(--bg-light);
+    color:var(--sub-color);
+    line-height:1.7;
+  }
+
+  a{
+    text-decoration:none;
+    color:inherit;
+  }
+
+  img{
+    width:100%;
+    border-radius:16px;
+  }
+
+  .container{
+    width:100%;
+    max-width:1100px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  section{
+    padding:72px 0;
+  }
+
+  /* HERO */
+
+.hero{
+  background:linear-gradient(
+    135deg,
+    rgb(0,230,230) 0%,
+    rgb(64,214,206) 45%,
+    rgb(209,244,241) 100%
+  );
+
+  color:rgb(39,54,70);
+  text-align:center;
+  padding:140px 24px 120px;
+
+  position:relative;
+  overflow:hidden;
+}
+
+.hero::before{
+  content:'';
+  position:absolute;
+  width:500px;
+  height:500px;
+  background:rgba(255,255,255,0.15);
+  border-radius:50%;
+
+  top:-180px;
+  right:-120px;
+}
+
+  .hero h1{
+    font-size:56px;
+    font-weight:800;
+    margin-bottom:28px;
+  }
+
+  .hero p{
+    font-size:19px;
+    opacity:0.96;
+    line-height:1.9;
+    max-width:900px;
+    margin:0 auto;
+  }
+
+  .highlight-message{
+    margin-top:32px;
+    background:rgba(255,255,255,0.12);
+    border:1px solid rgba(255,255,255,0.15);
+    border-radius:20px;
+    padding:24px;
+    font-size:18px;
+    font-weight:600;
+    backdrop-filter:blur(10px);
+  }
+
+  .sound-guide{
+    margin-top:28px;
+    font-size:19px;
+    opacity:0.9;
+  }
+
+  /* COMMON */
+
+  .section-title{
+    font-size:42px;
+    font-weight:800;
+    margin-bottom:40px;
+    line-height:1.35;
+    color:var(--sub-color);
+  }
+
+  .card{
+    background:var(--white);
+    border-radius:28px;
+    padding:42px;
+    margin-bottom:32px;
+    border:1px solid rgba(0,0,0,0.04);
+    box-shadow:0 10px 35px rgba(39,54,70,0.06);
+    transition:0.25s ease;
+  }
+
+  .card:hover{
+    transform:translateY(-4px);
+  }
+
+  .card h3{
+    font-size:28px;
+    margin-bottom:20px;
+    font-weight:700;
+    color:var(--sub-color);
+  }
+
+  .card p{
+    font-size:18px;
+    color:#555;
+  }
+
+  /* BENEFIT */
+
+  .benefit-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+    gap:24px;
+    margin-top:40px;
+  }
+
+  .benefit-item{
+    background:var(--white);
+    border-radius:24px;
+    padding:32px;
+    border-top:5px solid var(--main-color);
+    box-shadow:0 10px 30px rgba(39,54,70,0.05);
+    transition:0.25s ease;
+  }
+
+  .benefit-item:hover{
+    transform:translateY(-5px);
+  }
+
+  .benefit-item h4{
+    font-size:22px;
+    margin-bottom:16px;
+    font-weight:700;
+    color:var(--sub-color);
+  }
+
+  .benefit-item p{
+    color:#555;
+    font-size:16px;
+  }
+
+  /* FAQ */
+
+  .faq-box{
+    background:var(--white);
+    border-radius:24px;
+    padding:36px;
+    border-left:6px solid var(--point-color);
+    box-shadow:0 10px 30px rgba(39,54,70,0.05);
+  }
+
+  details{
+    border-bottom:1px solid #ececec;
+    padding:20px 0;
+  }
+
+  details:last-child{
+    border-bottom:none;
+  }
+
+  summary{
+    cursor:pointer;
+    font-size:19px;
+    font-weight:700;
+    list-style:none;
+    color:var(--sub-color);
+    transition:0.2s;
+  }
+
+  summary:hover{
+    color:var(--main-color);
+  }
+
+  summary::-webkit-details-marker{
+    display:none;
+  }
+
+  .faq-answer{
+    margin-top:18px;
+    color:#555;
+    font-size:17px;
+    padding-left:12px;
+    line-height:1.6;
+  }
+
+  /* VIDEO */
+
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+  margin-top:48px;
+}
+
+  .video-card{
+    background:var(--white);
+    border-radius:20px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(39,54,70,0.05);
+    transition:0.25s ease;
+  }
+
+  .video-card:hover{
+    transform:translateY(-5px);
+  }
+
+.video-card iframe{
+  width:100%;
+  height:190px;
+  border:none;
+}
+  .video-desc{
+    padding:20px;
+    font-size:15px;
+    color:#555;
+  }
+
+  /* NEWS */
+
+  .news-card{
+    background:var(--white);
+    border-radius:28px;
+    padding:36px;
+    margin-bottom:32px;
+    box-shadow:0 10px 30px rgba(39,54,70,0.05);
+  }
+
+  .news-card h3{
+    font-size:26px;
+    margin-bottom:24px;
+    color:var(--sub-color);
+  }
+
+  .news-item{
+    margin-bottom:52px;
+  }
+
+  .news-item:last-child{
+    margin-bottom:0;
+  }
+
+  .news-item a{
+    color:var(--main-color);
+    font-size:22px;
+    font-weight:700;
+    transition:0.2s;
+  }
+
+  .news-item a:hover{
+    opacity:0.8;
+  }
+
+  .news-item p{
+    margin-top:18px;
+    color:#555;
+    font-size:17px;
+  }
+
+  /* TOP BUTTON */
+
+  .top-button-wrap{
+    text-align:center;
+    margin-top:80px;
+  }
+
+  .top-button{
+    display:inline-block;
+    background:var(--main-color);
+    color:white;
+    padding:18px 34px;
+    border-radius:999px;
+    font-weight:700;
+    transition:0.25s ease;
+    box-shadow:0 10px 25px rgba(0,191,182,0.25);
+  }
+
+  .top-button:hover{
+    transform:translateY(-3px);
+    background:rgb(0,170,162);
+  }
+
+  /* CONTACT */
+
+  .contact-box{
+    margin-top:40px;
+    text-align:center;
+    font-size:18px;
+    font-weight:600;
+    color:#444;
+    line-height:1.9;
+  }
+
+  /* FOOTER */
+
+  footer{
+    margin-top:100px;
+    background:var(--sub-color);
+    color:#d7d7d7;
+    text-align:center;
+    padding:36px 24px;
+    font-size:14px;
+    line-height:1.8;
+  }
+
+  /* RESPONSIVE */
+
+  @media(max-width:900px){
+
+    section{
+      padding:72px 0;
+    }
+
+    .hero{
+      padding:100px 20px 90px;
+    }
+
+    .hero h1{
+      font-size:40px;
+    }
+
+    .hero p{
+      font-size:17px;
+    }
+
+    .section-title{
+      font-size:32px;
+    }
+
+    .card{
+      padding:32px;
+    }
+
+    .card h3{
+      font-size:24px;
+    }
+
+    .benefit-grid{
+      grid-template-columns:1fr;
+    }
+
+    .video-grid{
+      grid-template-columns:1fr;
+    }
+
+    .video-card iframe{
+      height:240px;
+    }
+
+  }
+
+</style>
+</head>
+
+<body id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container">
+
+      <h1>상상인 톺아보기 🔎</h1>
+
+      <p>
+        상상으로 세상을 행복하게 만들어가는 상상인그룹의 문을 두드려주신 여러분, 반갑습니다🎉<br>
+
+        여러분에게 더 많은 점을 알려드리고 싶은 마음을 담아
+        <strong>“상상인 톺아보기”</strong>를 준비했습니다.<br>
+        지원하면서 궁금하셨을 내용들을 편하게 살펴보세요🔎
+      </p>
+
+      <div class="highlight-message">
+        💬 더 궁금한 점은 언제든지 채용 담당자 또는 면접관에게 편하게 질문해주세요!<br>
+        여러분의 궁금증까지도 소중하게 생각합니다 :)
+      </div>
+
+      <div class="sound-guide">
+        🎶 유튜브 영상도 있으니, 사운드를 켜고 보시면 더욱 좋습니다.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 1 -->
+  <section>
+    <div class="container">
+
+      <h2 class="section-title">
+        💖 상상인그룹 : 상상으로 세상을 이롭게 하는 기업
+      </h2>
+
+      <div class="card">
+        <h3>🌎 상상인그룹의 존재 이유</h3>
+
+        <p>
+          그룹사명 <strong>“상상인그룹”은 상상, 사람人, IN의 합성어</strong>로,
+          상상을 불어넣어 더 이로운 세상을 만든다는 의미를 담고 있습니다.<br>
+
+          <strong>그룹 미션인 “상상으로 세상을 더 이롭게 하는 기업”</strong>을 바탕으로
+          사회, 고객, 동료와의 이로운 동행을 위해 나아갑니다.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>🚀 상상인그룹이 그리는 미래</h3>
+
+        <p>
+          IT, 금융, 제약/바이오 등 다양한 분야로 사업을 영위하면서 글로벌 기업을 향해
+          지속적인 성장을 하고 있으며,<br>상상 그 이상의 가치를 실현하면서
+          중장기적인 사회적 가치를 지닌 기업으로 나아가고 있습니다.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 2 -->
+  <section style="background:#f5f7ff;">
+    <div class="container">
+
+      <h2 class="section-title">
+        💚 상상인 : 30년 이상 네트워크와 정보보안 기술을 선도해온 ICT 전문 기업
+      </h2>
+
+      <div class="card">
+        <h3>💻 상상인이 하는 일</h3>
+
+        <p>
+          보안 시스템, 통합 커뮤니케이션, 소프트웨어 정의 네트워크, 클라우드 등
+          차별화된 솔루션을 바탕으로
+          <strong>정보통신 네트워크의 전 단계에 걸친 맞춤형 통합 유무선 네트워크 서비스를 제공</strong>하여
+          더 안전하고 효율적인 디지털 세상을 만들고 있습니다.
+        </p>
+      </div>
+
+      <div class="card">
+        <h3>💪 상상인이 만드는 가치</h3>
+
+        <p>
+          공공·금융·글로벌 기업의 IT 인프라를 설계하고 구축하며,
+          안정성과 신뢰를 바탕으로 성장해왔습니다.<br>
+
+          끊임없는 기술 혁신과 전문 인재를 기반으로
+          사람과 기술이 함께 성장하는 미래를 상상하며 오늘도 그 가능성을 확장합니다.
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- SECTION 3 -->
+<section>
+  <div class="container">
+
+    <h2 class="section-title">
+      💛 행복한 상상인을 위한 혜택 꾸러미🎁
+    </h2>
+
+    <!-- Work & Culture -->
+    <h3 style="font-size:32px; margin-bottom:32px; color:var(--sub-color);">
+      🏢 상상인의 Work & Culture
+    </h3>
+
+    <div class="benefit-grid">
+
+      <div class="benefit-item">
+        <h4>⏰ 주4.5일 근무 : 일은 집중해서, 주말은 길게</h4>
+
+        <p>
+          월요일 10시 출근으로 월요병 타파,<br>
+          금요일은 남들보다 빠르게 15시 퇴근!<br>
+
+          일할 땐 확실히 몰입해서 일한 만큼,
+          쉴 때도 확실히 쉽니다.<br>
+          <span style="color:var(--gray-color); font-size:14px;">
+            (근무처 및 상황에 따라 상이할 수 있습니다.)
+          </span>
+        </p>
+      </div>
+
+      <div class="benefit-item">
+        <h4>🎓 성장 지원 프로그램</h4>
+
+        <p>
+          임직원이 커야 상상인도 성장한다는 믿음으로<br>
+          직무교육비, 기술자격증 시험비,
+          합격 포상금(최대 200만원)을 지원합니다.
+        </p>
+      </div>
+
+      <div class="benefit-item">
+        <h4>👨‍👩‍👧‍👦 사내 동호회 : 취미활동과 교류를 한 번에</h4>
+
+        <p>
+          임직원들이 행복할 수 있는 건강한 조직문화를 위해
+          다양한 사내 동호회를 운영하고 있습니다.<br>
+
+          feat. 자전거, 등산, 풋살, 낚시, 사진
+        </p>
+      </div>
+
+      <div class="benefit-item">
+        <h4>🏆 인재 추천 포상금</h4>
+
+        <p>
+          동료로 함께하고 싶은 분을 추천해주세요!<br>
+          추천 인재가 수습 기간을 마치면 인재추천포상금을 드립니다!(최대 600만원)<br>
+        </p>
+      </div>
+
+      <div class="benefit-item">
+        <h4>☕ 상상인 카페테리아</h4>
+
+        <p>
+          동료들과 소통하고 에너지도 채울 수 있는
+          쾌적한 카페테리아가 있어요.<br>
+
+          feat. 우유, 사과, 피넛버터, 계란 등의 건강 간식부터
+          각종 음료, 라면, 김치까지!
+        </p>
+      </div>
+
+      <div class="benefit-item">
+        <h4>🎉 함께 즐기는 전사 이벤트</h4>
+
+        <p>
+          화창한 봄날의 피크닉 데이부터
+          걷기 프로젝트, 여의도 불꽃축제 구경까지!<br>
+
+          일상 속 즐거움을 만드는 전사 이벤트가 한가득!<br>
+          with. 가족과 함께해요💕
+        </p>
+      </div>
+
+    </div>
+
+    <div style="height:80px;"></div>
+
+    <!-- Life & Welfare -->
+    <h3 style="font-size:32px; margin-bottom:32px; color:var(--sub-color);">
+      🏝️ 상상인의 Life & Welfare
+    </h3>
+
+    <div class="benefit-grid">
+
+      <div class="benefit-item">
+        <h4>🍱 든든한 식대 지원</h4>
+
+        <p>
+          점심식사는 메뉴만 고민하세요!<br>
+          점심식사를 위해 매월 20만원의
+          법인 식대 카드를 제공해 드려요.<br>
+
+          예상치 못한 야근 시에도
+          저녁 식대를 지원합니다.
+        </p>
+      </div>
+
+      <div class="benefit-item">
+        <h4>🩺 건강한 상상인 가족들</h4>
+
+        <p>
+          임직원과 배우자, 자녀까지 포함해
+          연 300만원 내 의료비를 지원합니다.<br>
+
+          그리고 임직원과 배우자 각각의 건강검진 비용까지 지원해요!(연 50만~100만원)
+        </p>
+      </div>
+
+      <div class="benefit-item">
+        <h4>🛍️ 계절의 맛을 담은 제철 먹거리 선물</h4>
+
+        <p>
+          명절은 물론,
+          철마다 가장 좋은 먹거리를 엄선해서
+          집까지 보내드려요.<br>
+
+          feat. 한우, 한돈, 꽃게, 전복, 홍삼 등<br>
+
+          <span style="color:var(--gray-color); font-size:14px;">
+            (年 150만~250만원 상당)
+          </span>
+        </p>
+      </div>
+
+      <div class="benefit-item">
+        <h4>👪 힘이 되는 생활지원 제도</h4>
+
+        <p>
+          임직원 가족도 상상인입니다.<br>
+
+          경조사비, 출산축하금, 자녀학자금 등 중요한 순간마다 상상인이 함께해요!
+        </p>
+      </div>
+
+      <div class="benefit-item">
+        <h4>🏠 안정된 삶을 응원하는 대출 지원</h4>
+
+        <p>
+          삶이 안정적이어야 일에도 몰입할 수 있다고 생각합니다.<br>
+          임직원의 안정적 삶을 위한 주택 및 생활안정자금을 지원합니다.(2,000만~1억원)
+          </p>
+      </div>
+
+      <div class="benefit-item">
+        <h4>🏖️ 휴양시설 이용 지원</h4>
+
+        <p>
+          충전해야 더 멀리, 더 오래 갈 수 있어요.<br>
+
+          대명/한화/리솜 콘도 및 리조트 회원권으로
+          휴식과 재충전 시간을 제공해요.
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+  <!-- FAQ -->
+ <section style="background:#fffaf4;">
+  <div class="container">
+
+    <h2 class="section-title">
+      🤎 자주 묻는 질문 모음집📑
+    </h2>
+
+    <div class="faq-box">
+
+      <p style="margin-bottom:28px; color:#666;">
+        질문 앞의 “▶”를 클릭하면 답변을 확인할 수 있습니다.
+      </p>
+
+      <!-- 1 -->
+      <details>
+        <summary>
+          ▶ Q. 전형별 결과는 언제 어떻게 알 수 있나요?
+        </summary>
+
+        <div class="faq-answer">
+          서류 전형은 합격자에 한해서 연락 드리고 있으며,
+          인터뷰는 결과에 상관 없이 3영업일 내에 모두 안내 드립니다.<br>
+
+          최대한 빠르게 안내 드리려고 하나,
+          3영업일보다 늦어질 경우에는 결과 안내 지연 문자를 발송 드리고 있으니
+          양해 부탁 드립니다🙇‍♂️
+        </div>
+      </details>
+
+      <!-- 2 -->
+      <details>
+        <summary>
+          ▶ Q. 인터뷰는 몇 차례 진행되나요?
+        </summary>
+
+        <div class="faq-answer">
+          일반적으로 1차 인터뷰(상상인 대표이사)와
+          2차 인터뷰(그룹 대표이사)를 진행합니다.<br>
+
+          경우에 따라
+          1차 실무진 인터뷰 →
+          2차 상상인 대표이사 인터뷰 →
+          3차 그룹 대표이사 인터뷰로 진행될 수 있습니다.
+        </div>
+      </details>
+
+      <!-- 3 -->
+      <details>
+        <summary>
+          ▶ Q. 비대면(화상) 면접도 가능한가요?
+        </summary>
+
+        <div class="faq-answer">
+          실무진 면접의 경우,
+          비대면(화상) 면접 진행이 가능합니다.
+        </div>
+      </details>
+
+      <!-- 4 -->
+      <details>
+        <summary>
+          ▶ Q. 인터뷰 시, 복장은 어떻게 하면 좋을까요?
+        </summary>
+
+        <div class="faq-answer">
+          별도로 정해진 규정은 없으며,
+          단정한 복장이면 편하게 참석해주셔도 괜찮습니다 🙂
+        </div>
+      </details>
+
+      <!-- 5 -->
+      <details>
+        <summary>
+          ▶ Q. 입사일은 어떻게 결정되나요?
+        </summary>
+
+        <div class="faq-answer">
+          희망하시는 입사일을 인사팀이 확인한 후,
+          현업 부서와 합격자분의 상황을 함께 고려하여 조율하고 있습니다.
+        </div>
+      </details>
+
+      <!-- 6 -->
+      <details>
+        <summary>
+          ▶ Q. 연봉 협의와 결정 과정이 궁금해요.
+        </summary>
+
+        <div class="faq-answer">
+          최종 합격 이후 인사팀에서 개별 연락을 통해
+          처우 협의를 위한 제출 서류를 안내 드립니다.<br>
+
+          이력서와 포트폴리오,
+          보여주신 경험과 역량,
+          직전 연봉 등을 종합적으로 고려하여 협의 후 결정합니다.
+        </div>
+      </details>
+
+      <!-- 7 -->
+      <details>
+        <summary>
+          ▶ Q. 입사 후에 별도의 교육을 진행하나요?
+        </summary>
+
+        <div class="faq-answer">
+          입사 첫 주에는 인사팀 주관으로
+          상상인의 조직문화, 인사제도, 복리후생 등의 OT를 진행합니다.<br>
+
+          이후에는 조직 전반의 이해도 향상을 위해
+          부서별 일정과 업무 특성에 따른 순환 근무를 통해
+          부서별 실무 교육을 제공합니다.<br>
+
+          ■ 경력직 : 약 1개월<br>
+          ■ 신입 : 약 3개월
+        </div>
+      </details>
+
+      <!-- 8 -->
+      <details>
+        <summary>
+          ▶ Q. 수습 기간에 대해서 알려주세요.
+        </summary>
+
+        <div class="faq-answer">
+          상상인과 입사자가 서로의 합을 맞춰보는 과정으로,
+          신입과 경력 모두 동일하게
+          3개월의 수습 기간을 운영합니다.
+        </div>
+      </details>
+
+      <!-- 9 -->
+      <details>
+        <summary>
+          ▶ Q. 근무 환경은 어떤가요? (근무 시간, 휴가 등)
+        </summary>
+
+        <div class="faq-answer">
+          일과 휴식 모든 면에서 열정적인 상상인이 되길 바라며,
+          주 4.5일 근무제를 운영하고 있습니다.<br>
+
+          <strong>📍 본사 기준 근무 시간</strong><br>
+          ■ 기본 출퇴근 시간 : 09:00 ~ 18:00<br>
+          ■ 매주 월요일 : 10:00 출근<br>
+          ■ 매주 금요일 : 15:00 퇴근<br>
+
+          단, 근무처 및 상황에 따라 근무 시간이 상이할 수 있습니다.
+        </div>
+      </details>
+
+    </div>
+
+  </div>
+</section>
+
+  <!-- VIDEO -->
+  <section>
+    <div class="container">
+
+      <h2 class="section-title">
+        💚 영상으로 미리 만나는 상상인그룹
+      </h2>
+
+      <p style="font-size:19px; color:#555;">
+        상상인그룹의 계열사들은 어떤 곳이고, 어떤 동료들이 있을까요?<br>
+        상상人이 직접 말하는 상상인그룹 이야기를 들어보세요!
+      </p>
+
+      <div class="video-grid">
+
+  <div class="video-card">
+    <iframe
+      src="https://www.youtube.com/embed/CMlmgD53P7I"
+      title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen>
+</iframe>
+
+    <div class="video-desc">
+      IT로 사람과 사람을,<br>
+      사람과 세상을 연결하는 상상인
+    </div>
+  </div>
+
+  <div class="video-card">
+    <iframe
+      src="https://www.youtube.com/embed/cAe6ij0jpqQ"
+      title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen>
+</iframe>
+
+    <div class="video-desc">
+      업계 국내 1위의 코스닥 상장사,<br>
+      시너지이노베이션
+    </div>
+  </div>
+
+  <div class="video-card">
+    <iframe
+      src="https://www.youtube.com/embed/DgnHspQBlrE"
+       title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen>
+</iframe>
+
+    <div class="video-desc">
+      매년 눈부시게 성장 중인 글로벌 제약사,<br>
+      메디카코리아
+    </div>
+  </div>
+
+  <div class="video-card">
+    <iframe
+      src="https://www.youtube.com/embed/YnyysYzMFyw"
+      title="YouTube video player"
+  frameborder="0"
+  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+  referrerpolicy="strict-origin-when-cross-origin"
+  allowfullscreen>
+</iframe>
+
+    <div class="video-desc">
+      세계에서 통하는 Global Medical 기업,<br>
+      엠아이텍
+    </div>
+  </div>
+
+</div>
+  </section>
+
+  <!-- NEWS -->
+  <section style="background:#f8f8f8;">
+    <div class="container">
+
+      <h2 class="section-title">
+        ❤ 뉴스로 미리 만나는 상상인그룹
+      </h2>
+
+      <p style="font-size:18px; margin-bottom:48px; color:#666;">
+        제목을 클릭해서 더 자세한 기사를 읽어보세요📑
+      </p>
+
+      <div class="news-card">
+
+        <h3>우리의 철학 : 상상으로 세상을 이롭게</h3>
+
+        <div class="news-item">
+          <a href="https://www.mk.co.kr/news/business/11282775" target="_blank">
+            🏅 국가가 인정한 일자리 창출과 고용 안정 리더, 상상인그룹
+          </a>
+
+          <p>
+            경영 정상화와 일자리의 지속성을 함께 만들어가며,
+            사람과 기업이 함께 성장하는 지속 가능한 일터를 만들어가고 있습니다.
+          </p>
+        </div>
+
+        <div class="news-item">
+          <a href="https://sports.donga.com/economy/article/all/20251022/132614002/1" target="_blank">
+            🦽 정부 정책으로 이어진 상상인그룹의 전동 휠체어 기부 활동
+          </a>
+
+          <p>
+            전국 아동·청소년에게 맞춤형 휠체어와 동력 보조 장치를 지원하며
+            이동권 향상에 기여하고 있습니다.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="news-card">
+
+        <h3>함께하고 싶은 회사 : 사람이 중심입니다.</h3>
+
+        <div class="news-item">
+          <a href="https://www.mk.co.kr/news/stock/11306485" target="_blank">
+            🌺 상상인그룹의 가족들과 함께 만드는 봄날의 피크닉데이
+          </a>
+
+          <p>
+            임직원과 가족이 함께 즐기는 조직문화 프로그램을 통해
+            함께 성장하는 문화를 만들어가고 있습니다.
+          </p>
+        </div>
+
+        <div class="news-item">
+          <a href="https://www.hankyung.com/article/2025073141896" target="_blank">
+            🌰 칭찬으로 출발하는 상상인그룹의 소통과 인정 문화
+          </a>
+
+          <p>
+            서로의 장점과 성과를 인정하는 문화를 통해
+            건강한 협업 문화를 만들어가고 있습니다.
+          </p>
+        </div>
+
+      </div>
+
+      <div class="top-button-wrap">
+        <a href="#top" class="top-button">
+          🔼 맨 위로 돌아가기
+        </a>
+      </div>
+
+      <div class="contact-box">
+        ☎ 채용 관련 문의는 언제든<br>
+        brmoon@sangsanginworld.co.kr 또는
+        ymchoi@sangsanginworld.co.kr 로 연락 주세요.
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    © 2026 Sangsangin Group 인재경영실<br>
+  </footer>
+
+</body>
+</html>
